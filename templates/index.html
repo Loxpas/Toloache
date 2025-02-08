@@ -1,0 +1,555 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Configuración básica del documento -->
+    <meta charset="utf-8" />
+    <!-- Define la codificación de caracteres como UTF-8 -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <!-- Hace que la página sea responsive -->
+
+    <!-- Enlaces a hojas de estilo y recursos externos -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+      crossorigin="anonymous"
+    />
+    <!-- Importa FontAwesome para íconos -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <!-- Importa Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <!-- Importa una hoja de estilos personalizada -->
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{% static 'img/jarraIcon.png' %}"
+    />
+    <!-- Ícono de la pestaña del navegador -->
+
+    <!-- Título de la página -->
+    <title>Toloache</title>
+  </head>
+
+  <body>
+    <!-- Encabezado de la página -->
+    <header class="mt-0 pt-0">
+      <div class="bg-cover clearfix pt-3">
+        <!-- Logo de la marca -->
+        <h2 class="logo">Toloache</h2>
+
+        <!-- Barra de navegación con enlaces a redes sociales -->
+        <nav class="nav nav-fill mx-auto">
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              href="https://www.facebook.com/toloache.col"
+              target="_blank"
+            >
+              <i class="fab fa-facebook-f"></i>
+              <!-- Ícono de Facebook -->
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              href="https://twitter.com/fh5co"
+              target="_blank"
+            >
+              <i class="fab fa-twitter"></i>
+              <!-- Ícono de Twitter -->
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="fab fa-instagram"></i>
+              <!-- Ícono de Instagram -->
+            </a>
+          </li>
+        </nav>
+
+        <!-- Menú de navegación principal -->
+        <div class="ml-0 mr-0 pb-1">
+          <nav class="navbar navbar-expand-md">
+            <!-- Botón para mostrar/ocultar el menú en dispositivos móviles -->
+            <button
+              class="navbar-toggler ml-auto"
+              data-target="#my-nav"
+              data-toggle="collapse"
+              aria-controls="my-nav"
+              aria-expanded="false"
+              onclick="myFunction(this)"
+              aria-label="Toggle navigation"
+            >
+              <span class="bar1"></span> <span class="bar2"></span>
+              <span class="bar3"></span>
+            </button>
+
+            <!-- Contenido del menú de navegación -->
+            <div id="my-nav" class="collapse navbar-collapse">
+              <ul class="navbar-nav mx-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Inicio</a>
+                  <!-- Enlace a la página de inicio -->
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#sobre-nosotros">Nosotros</a>
+                  <!-- Enlace a la sección "Nosotros" -->
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'lista_productos' %}"
+                    >Productos</a
+                  >
+                  <!-- Enlace a la página de productos -->
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'galeria' %}">Galería</a>
+                  <!-- Enlace a la sección "Galería" -->
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'talleres' %}">Talleres</a>
+                  <!-- Enlace a la sección "Talleres" -->
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#contacto">Contacto</a>
+                  <!-- Enlace a la sección "Contacto" -->
+                </li>
+                <li class="nav-item">
+                  <!-- Formulario de búsqueda con un ícono de lupa -->
+                  <form action="" method="POST">
+                    <div class="input-group mt-0 mx-auto" style="width: 16px">
+                      <div class="">
+                      </div>
+                    </div>
+                  </form>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </div>
+
+      <!-- Sección de imágenes destacadas -->
+      <div class="row ml-0 mr-0">
+        <!-- Primera imagen destacada -->
+        <div class="col-md-6 pr-0">
+          <div class="card">
+            <img class="card-img" src="{% static 'img/Interior.jpg' %}" alt="" />
+            <div
+              class="card-img-overlay d-flex align-items-center justify-content-center flex-column"
+            >
+              <p>Interior</p>
+              <hr />
+              <h2>Para Interior</h2>
+              
+              <!-- Botón para leer más -->
+            </div>
+          </div>
+        </div>
+        <!-- Segunda imagen destacada -->
+        <div class="col-md-6 pl-0">
+          <div class="card">
+            <img class="card-img" src="{% static 'img/Exterior.jpg' %}" alt="" />
+            <div
+              class="card-img-overlay d-flex align-items-center justify-content-center flex-column"
+            >
+              <p>Exterior</p>
+              <hr />
+              <h2>Para exterior</h2>
+              <!-- Botón para leer más -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Imágenes más pequeñas en una cuadrícula -->
+        <div class="col-md-3 pr-0 first">
+          <div class="card">
+            <img class="card-img" src="{% static 'img/architecture.png' %}" alt="" />
+            <div class="card-img-overlay">
+              <h5>Macetas</h5>
+              <!-- Título superpuesto -->
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 pl-0 pr-0">
+          <div class="card">
+            <img class="card-img" src="{% static 'img/Tazas(1).jpg' %}" alt="" />
+            <div class="card-img-overlay">
+              <h5>Tazas</h5>
+              <!-- Título superpuesto -->
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 pl-0 pr-0">
+          <div class="card">
+            <img class="card-img" src="{% static 'img/food.png' %}" alt="" />
+            <div class="card-img-overlay">
+              <h5>Repisas</h5>
+              <!-- Título superpuesto -->
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 pl-0 last">
+          <div class="card">
+            <img class="card-img" src="{% static 'img/platos.jpg'%}" alt="" />
+            <div class="card-img-overlay">
+              <h5>Platos</h5>
+              <!-- Título superpuesto -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Sección de reproductor de video y galería -->
+    <div class="container-fluid video-player">
+      <div class="container">
+        <!-- Reproductor de video embebido -->
+        <div class="screen embed-responsive embed-responsive-16by9">
+          <iframe
+            id="screen"
+            src="https://www.youtube.com/embed/7RykhXXK4GA?si=AFxn-eciGutNpFl0"
+            frameborder="0"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+
+        <!-- Galería de imágenes -->
+        <div class="play-list">
+          <div class="owl-carousel owl-carousel4 owl-theme">
+            <div>
+              <div class="card">
+                <img
+                  class="card-img link-img"
+                  src="{% static 'img/Tazas(2).jpg' %}"
+                  alt=""
+                />
+              </div>
+            </div>
+            <div>
+              <div class="card">
+                <img
+                  class="card-img link-img"
+                  src="{% static 'img/Tazas(2).jpg' %}"
+                  alt=""
+                />
+              </div>
+            </div>
+            <div>
+              <div class="card">
+                <img
+                  class="card-img link-img"
+                  src="{% static 'img/Tazas(2).jpg' %}"
+                  alt=""
+                />
+              </div>
+            </div>
+            <div>
+              <div class="card">
+                <img
+                  class="card-img link-img"
+                  src="{% static 'img/Tazas(2).jpg' %}"
+                  alt=""
+                />
+              </div>
+            </div>
+            <div>
+              <div class="card">
+                <img
+                  class="card-img link-img"
+                  src="{% static 'img/plato2.jpg' %}"
+                  alt=""
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr />
+
+        <!-- Sección de galería y contenido adicional -->
+        <div class="row vr-gallery" id="sobre-nosotros">
+          <!-- Primera fila de contenido -->
+          <div class="row justify-content-center">
+            <!-- Centrar la fila -->
+            <div class="col-md-8 mb-4">
+              <div class="row">
+                <!-- Imagen -->
+                <div class="col-md-12 col-lg-7 pr-0 pd-md">
+                  <img
+                    src="{% static 'img/Somos.jpg' %}"
+                    alt="Karla y Emanuel trabajando en Toloache"
+                    class="img-fluid rounded"
+                  />
+                </div>
+
+                <!-- Texto -->
+                <div class="col-md-12 col-lg-5 light-bg cus-pd cus-arrow-left">
+                  <p><small>march 27, 2020</small></p>
+                  <h3>¿Quienes Somos?</h3>
+                  <p>
+                    Somos Karla y Emanuel, dos colimotes que, con las manos
+                    llenas de barro, fundamos Toloache, un proyecto que nació en
+                    2019 en el alma vibrante de Colima. Nuestro viaje comenzó un
+                    domingo de mayo, jugando con arcilla de Comala. La sorpresa
+                    de ver la tierra transformarse en un objeto útil nos
+                    cautivó.
+                  </p>
+                  <p class="collapse" id="quienesSomos">
+                    Nos enamoramos del proceso, de esa alquimia, del arte, y de
+                    la idea de que cada pieza cobra vida. A lo largo del tiempo,
+                    hemos sumado a nuestro proyecto a diferentes artistas que
+                    comparten nuestra pasión y nos ayudan a crecer. Juntos,
+                    hemos tejido un espacio donde la creatividad florece, donde
+                    cada pieza es un lazo que nos conecta y genera nuevas
+                    inquietudes. Toloache no es solo un proyecto, es un
+                    encuentro constante con la magia de la tierra, con las
+                    personas que comparten nuestro amor por ella y con la
+                    belleza de lo simple. Es un espacio donde las manos hablan,
+                    donde cada pieza cuenta una historia.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- segunda fila de contenido -->
+          <div class="col-md-8 mb-4 pr-0 pd-md">
+            <div class="card h-100">
+              <img
+                src="{% static 'img/Haciendo.jpg' %}"
+                alt="Proceso de creación en Toloache"
+                class="card-img-top img-fluid"
+              />
+              <div class="card-img-overlay d-flex align-items-end">
+                <div class="contact-box bg-white p-4">
+                  <p><small>march 27, 2020</small></p>
+                  <h3>Nuestra Misión</h3>
+                  <p>
+                    En Toloache, nos dedicamos a transformar la tierra en piezas
+                    únicas que combinan funcionalidad y arte. A través de la
+                    alfarería, buscamos crear un espacio donde la creatividad y
+                    el trabajo en equipo florezcan, invitando a artistas y
+                    curiosos a conectarse con el proceso artesanal. Nuestro
+                    compromiso es ofrecer productos que no solo sean útiles,
+                    sino que también cuenten una historia, transmitiendo el amor
+                    por la tierra y la belleza de lo hecho a mano.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- tercera fila de contenido -->
+          <div class="col-md-4 pl-4 mb-4">
+            <div class="card h-100">
+              <img
+                src="{% static 'img/historia.jpg' %}"
+                alt="Historia de Toloache"
+                class="card-img-top img-fluid"
+              />
+              <div class="card-body bg-gray cus-pd2 cus-arrow-up">
+                <p><small>march 27, 2020</small></p>
+                <h3>Nuestra Visión</h3>
+                <p>
+                  Ser un referente en la alfarería artesanal de Colima,
+                  reconocidos por nuestra capacidad de fusionar tradición y
+                  creatividad en cada pieza que creamos. Queremos seguir
+                  creciendo junto a una comunidad de artistas y personas que
+                  valoren lo auténtico y lo hecho con pasión. Aspiramos a que
+                  cada pieza de Toloache sea un puente que conecte a las
+                  personas con la magia de la tierra y el poder de lo simple,
+                  convirtiéndose en parte de sus historias cotidianas.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- cuarta fila de contenido -->
+          <div class="row justify-content-center">
+            <!-- Centrar la fila -->
+            <div class="col-md-8 mb-4">
+              <div class="row">
+                <!-- Imagen -->
+                <div class="col-md-12 col-lg-7 pr-0 pd-md">
+                  <img
+                    src="{% static 'img/gatotaza.jpg' %}"
+                    alt="Gato en una taza de barro"
+                    class="img-fluid rounded"
+                  />
+                </div>
+
+                <!-- Texto -->
+                <div class="col-md-12 col-lg-5 light-bg cus-pd cus-arrow-left">
+                  <p><small>march 27, 2020</small></p>
+                  <h3>Únete a Nuestra Tradición</h3>
+                  <p>
+                    Comprar una pieza de Toloache es llevarte un objeto único,
+                    hecho a mano con pasión y creatividad. Cada pieza fusiona
+                    funcionalidad y arte, conectándote con la magia de la tierra
+                    de Colima y apoyando el trabajo artesanal local. Es más que
+                    un objeto, es una historia que te acompaña.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Sección de contacto -->
+    <section
+      id="contacto"
+      class="container-fluid py-5"
+      style="background-color: #f8f9fa"
+    >
+      <div class="container">
+        <!-- Título de la sección -->
+        <h2
+          class="text-center mb-5"
+          style="font-family: 'Playfair Display', serif; color: #5a3e36"
+        >
+          Contacto
+        </h2>
+
+        <!-- Descripción -->
+        <p class="text-center mb-5" style="font-size: 1.1rem; color: #6c757d">
+          ¿Tienes alguna pregunta o quieres hacer un pedido especial? ¡No dudes
+          en contactarnos!
+        </p>
+
+        <div class="row">
+          <!-- Formulario de contacto -->
+          <div class="col-md-6 mb-4">
+            <form id="contactForm" action="https://formspree.io/f/mgveeyaj" method="POST">
+              <div class="mb-3">
+                <label for="nombre" class="form-label" style="color: #5a3e36">Nombre</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" required />
+              </div>
+              <div class="mb-3">
+                <label for="correo" class="form-label" style="color: #5a3e36">Correo electrónico</label>
+                <input type="email" class="form-control" id="correo" name="correo" required />
+              </div>
+              <div class="mb-3">
+                <label for="mensaje" class="form-label" style="color: #5a3e36">Mensaje</label>
+                <textarea class="form-control" id="mensaje" name="mensaje" rows="5" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-dark">Enviar mensaje</button>
+          
+              <!-- Mensaje de confirmación -->
+              <div id="confirmationMessage" class="mt-3" style="display:none; color: green; font-weight: bold;" role="status" aria-live="polite">
+                ¡Gracias por tu mensaje! Te responderemos pronto.
+              </div>
+            </form>
+          </div>
+
+          <!-- Información de contacto -->
+          <div class="col-md-6 mb-4">
+            <div class="card h-100 border-0 shadow-sm">
+              <div class="card-body">
+                <h5
+                  class="card-title"
+                  style="font-family: 'Playfair Display', serif; color: #5a3e36"
+                >
+                  ¡Escríbenos!
+                </h5>
+                <p class="card-text" style="color: #6c757d">
+                  Estamos aquí para ayudarte. Puedes contactarnos a través de
+                  WhatsApp o correo electrónico.
+                </p>
+                <ul class="list-unstyled">
+                  <li class="mb-3">
+                    <a
+                      href="https://wa.me/523122104949"
+                      target="_blank"
+                      class="text-decoration-none"
+                    >
+                      <i
+                        class="fab fa-whatsapp fa-2x"
+                        style="color: #25d366"
+                      ></i>
+                      <span style="color: #5a3e36; margin-left: 10px"
+                        >+52 312 210 4949</span
+                      >
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="mailto:toloache.colima@gmail.com"
+                      class="text-decoration-none"
+                    >
+                      <i
+                        class="fas fa-envelope fa-2x"
+                        style="color: #d44638"
+                      ></i>
+                      <span style="color: #5a3e36; margin-left: 10px"
+                        >toloache.colima@gmail.com</span
+                      >
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pie de página -->
+    <footer class="container-fluid pt-5">
+      <div class="container">
+        <!-- Logo de la marca en el pie de página -->
+        <h2 class="logo text-center">Toloache</h2>
+
+        <!-- Barra de navegación con enlaces a redes sociales -->
+        <nav class="nav nav-fill mx-auto mt-5">
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              href="https://www.facebook.com/toloache.col"
+              target="_blank"
+            >
+              <i class="fab fa-facebook-f"></i>
+              <!-- Ícono de Facebook -->
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="" target="_blank">
+              <i class="fab fa-twitter"></i>
+              <!-- Ícono de Twitter -->
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="fab fa-instagram"></i>
+              <!-- Ícono de Instagram -->
+            </a>
+          </li>
+        </nav>
+      </div>
+
+      <!-- Sección de derechos de autor -->
+      <div class="copyright mt-4">
+        <p class="text-center">
+          &copy; 2019 <a href="#" class="text-white">Toloache</a>. All Rights
+          Reserved.
+          <!-- Texto de derechos de autor -->
+        </p>
+      </div>
+    </footer>
+
+    <!-- Scripts de JavaScript -->
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/jquery-1.12.0.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/jquery.yu2fvl.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/forms.js' %}"></script>
+  </body>
+</html>

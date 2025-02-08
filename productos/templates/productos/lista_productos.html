@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="es">
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- Enlaces a CSS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <link
+    rel="icon"
+    type="image/x-icon"
+    href="{% static 'img/jarraIcon.png' %}"
+  />
+
+    <link rel="icon" type="image/x-icon" href="{% static 'images/jarraIcon.png' %}">
+    
+    <title>Catálogo de Artesanías de Barro - Toloache</title>
+</head>
+
+<body>
+    <!-- Encabezado -->
+    <header class="mt-0 pt-0">
+        <div class="bg-cover clearfix pt-3">
+            <h2 class="logo">Toloache</h2>
+            <!-- Redes sociales -->
+            <nav class="nav nav-fill mx-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.facebook.com/toloache.col" target="_blank">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" target="_blank">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </li>
+            </nav>
+
+            <!-- Barra de navegación -->
+            <div class="ml-0 mr-0 pb-1">
+                <nav class="navbar navbar-expand-md">
+                    <button class="navbar-toggler ml-auto" data-target="#my-nav" data-toggle="collapse">
+                        <span class="bar1"></span> <span class="bar2"></span> <span class="bar3"></span>
+                    </button>
+                    <div id="my-nav" class="collapse navbar-collapse">
+                        <ul class="navbar-nav mx-auto">
+                            <li class="nav-item"><a class="nav-link" href="{% url 'index' %}">Inicio</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'index' %}#sobre-nosotros">Nosotros</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'lista_productos' %}">Productos</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'galeria' %}">Galeria</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'talleres' %}">Talleres</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'index' %}#contacto">Contacto</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sección de productos -->
+    <section id="productos" class="container-fluid py-5" style="background-color: #f8f9fa;">
+        <div class="container">
+            <h2 class="text-center mb-5" style="font-family: 'Playfair Display', serif; color: #5a3e36;">
+                Catálogo de Artesanías
+            </h2>
+            
+            <p class="text-center mb-5" style="font-size: 1.1rem; color: #6c757d;">
+                Descubre nuestra colección de artesanías únicas, cada pieza creada con dedicación y tradición.
+            </p>
+
+            <!-- Listado de categorías y productos -->
+            {% for categoria in categorias %}
+            <div class="col-md-12 mb-5">
+                <h3 class="text-center mb-4" style="font-family: 'Playfair Display', serif; color: #5a3e36;">
+                    {{ categoria.nombre }}
+                </h3>
+                <div class="play-list">
+                    <div class="owl-carousel owl-theme">
+                        {% for producto in productos %}
+                            {% if producto.categoria == categoria %}
+                                <div class="item">
+                                    <div class="card border-0 shadow-sm text-center">
+                                        <img class="card-img-top" 
+                                             src="{{ producto.imagen_principal.url }}" 
+                                             alt="{{ producto.nombre }}"
+                                             style="height: 250px; object-fit: cover;">
+                                        <div class="card-body">
+                                            <h5 class="card-title" style="color: #5a3e36;">
+                                                {{ producto.nombre }}
+                                            </h5>
+                                            <p class="card-text text-muted">{{ producto.descripcion_corta }}</p>
+                                            <a href="{% url 'detalle_producto' producto.id %}" class="btn btn-dark">
+                                                Ver producto
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        
+        </div>
+    </section>
+
+    <!-- Pie de página -->
+    <footer class="container-fluid pt-5">
+        <div class="container">
+            <h2 class="logo text-center">Toloache</h2>
+            <nav class="nav nav-fill mx-auto mt-5">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.facebook.com/toloache.col" target="_blank">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" target="_blank">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </li>
+            </nav>
+        </div>
+        <div class="copyright mt-4">
+            <p class="text-center">&copy; 2024 <a href="#" class="text-white">Toloache</a>. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="{% static 'js/jquery-1.12.0.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".owl-carousel").owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: true,
+                responsive: {
+                    0: { items: 1 },
+                    600: { items: 2 },
+                    1000: { items: 3 }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
