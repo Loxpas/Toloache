@@ -78,7 +78,7 @@ USE_I18N = True
 USE_TZ = True
 
 # Configuración de archivos estáticos
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / "static"]
 if not DEBUG:
     # Tell Django to copy static assets into a path called `staticfiles` (this is specific to Render)
