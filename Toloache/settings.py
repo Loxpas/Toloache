@@ -4,15 +4,12 @@ import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Configuración de la clave secreta (asegúrate de que esté configurada como variable de entorno en producción)
-SECRET_KEY = os.environ.get('SECRET_KEY', default='your_default_secret_key')
+SECRET_KEY = os.environ.get('SECRET_KEY', default='your secret key')
 
-# Modo DEBUG: En producción debe estar en False
-DEBUG = os.environ.get('DEBUG', 'False') == 'True'
+DEBUG = 'RENDER' not in os.environ
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
-# Configuración para Render o cualquier otra plataforma en la nube
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME:
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
@@ -24,7 +21,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'productos',  # Tu aplicación personalizada
+    'productos',
 ]
 
 MIDDLEWARE = [
@@ -35,7 +32,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',  # Para servir archivos estáticos en producción
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'Toloache.urls'
@@ -58,15 +55,16 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Toloache.wsgi.application'
 
-# Configuración de la base de datos
 DATABASES = {
     'default': dj_database_url.config(
-        default=os.environ.get('DATABASE_URL', 'postgresql://postgres:postgres@localhost:5432/mysite'),
+        default='postgresql://postgres:postgres@localhost:5432/mysite',
         conn_max_age=600
-    ),
+    )
+        #'ENGINE': 'django.db.backends.sqlite3',
+        #'NAME': BASE_DIR / 'db.sqlite3',
+    
 }
 
-# Validadores de contraseñas
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
@@ -74,7 +72,6 @@ AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
 
-# Configuración de localización
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 USE_I18N = True
@@ -82,12 +79,16 @@ USE_TZ = True
 
 # Configuración de archivos estáticos
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / "static"]  # Carpeta para archivos estáticos en desarrollo
-STATIC_ROOT = BASE_DIR / 'staticfiles'  # Carpeta para archivos estáticos en producción
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'  # Usar WhiteNoise para producción
+STATICFILES_DIRS = [BASE_DIR / "static"]
+if not DEBUG:
+    # Tell Django to copy static assets into a path called `staticfiles` (this is specific to Render)
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    # Enable the WhiteNoise storage backend, which compresses static files to reduce disk use
+    # and renames the files with unique names for each version to support long-term caching
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Configuración de archivos multimedia
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = '/media/'  
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
